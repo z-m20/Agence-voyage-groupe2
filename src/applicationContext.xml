@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<!-- <context:component-scan base-package="com.lip6.services.*" /> <context:annotation-config/> -->
+
+<!-- 	<aop:config>
+	<aop:aspect id="aopTesterBean" ref="aopTester">
+	<aop:before 
+		pointcut="execution(* bonjour())"
+		method="aurevoir"/>
+	</aop:aspect>
+	</aop:config>
+	<bean id="aopTester" class = "com.lip6.aop.AopTester">
+	</bean> -->
+	
+		<!-- <aop:config>
+	<aop:aspect id="aopTesterBean" ref="aopTester">
+	<aop:around 
+		pointcut="execution(void bonjour(String)) and args(prenom)"
+		method="aurevoir"/>
+	</aop:aspect>
+	</aop:config>
+	<bean id="aopTester" class = "com.lip6.aop.AopTester">
+	</bean> -->
+	
+	<aop:config>
+	<aop:aspect id="aopTesterBean" ref="aopTester">
+	<aop:around 
+		pointcut="execution(void bonjour(String)) and args(prenom)"
+		method="aurevoir" arg-names="pjp,prenom"/>
+	</aop:aspect>
+	</aop:config>
+	<bean id="aopTester" class = "com.lip6.aop.AopTester">
+	</bean>
+
+	
+	<bean id="contact" class="com.lip6.entities.Contact">
+		<property name="email" value="oumaima.elm@gmail.com" />
+		<property name="firstName" value="oumaima" />
+		<property name="lastName" value="elmrabet" />
+		<property name="adresse">
+			<ref bean="adresse" />
+		</property>
+	
+	</bean>
+		<bean id="contact1" class="com.lip6.entities.Contact">
+		<constructor-arg value="Laure"> </constructor-arg>
+		<constructor-arg value="Bourgois"> </constructor-arg>
+		<constructor-arg value="Laure.b@gmail.com"> </constructor-arg>
+		<property name="adresse">
+			<ref bean="adresse1" />
+		</property>
+	
+	</bean>
+		<bean id="adresse1" class="com.lip6.entities.Adresse">
+		<property name="city" value="paris" />
+		<property name="street" value="st maur" />
+		<property name="zip" value="75018" />
+	</bean>
+	
+	<bean id="adresse" class="com.lip6.entities.Adresse">
+		<property name="city" value="paris" />
+		<property name="street" value="ivry" />
+		<property name="zip" value="75013" />
+	</bean>
+
+</beans>
