@@ -35,7 +35,7 @@
 	</aop:config>
 	<bean id="aopTester" class = "com.lip6.aop.AopTester">
 	</bean> -->
-	
+<!--	
 	<aop:config>
 	<aop:aspect id="aopTesterBean" ref="aopTester">
 	<aop:around 
@@ -76,5 +76,5 @@
 		<property name="street" value="ivry" />
 		<property name="zip" value="75013" />
 	</bean>
-
+-->
 </beans>
